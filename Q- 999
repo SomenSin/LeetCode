@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int f(vector<vector<char>>& b,int i,int j,int d1,int d2) {
+        int n=b.size(),m=b[0].size();
+        while(i>=0 && i<n && j>=0 && j<m && b[i][j]!='B') {
+            if(b[i][j]=='p') {
+                return 1;
+            }
+            i += d1;
+            j += d2;
+        }
+        return 0;
+    }
+    int numRookCaptures(vector<vector<char>>& b) {
+        int n=b.size(),m=b[0].size();
+     
+        for(int i=0;i<n;i++) {
+           
+            for(int j=0;j<n;j++) {
+
+                if(b[i][j]=='R') {
+                    int ans = f(b,i,j,-1,0) + f(b,i,j,0,1) + f(b,i,j,0,-1)  + f(b,i,j,1,0);
+                    return ans ; /*North(-1,0)up     East(0,1)right       West(0,-1)left     South(1,0)down    respectively */
+
+                }
+            }
+        }
+        return 0;
+    }
+     
+};
+
