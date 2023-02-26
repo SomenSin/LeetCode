@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        int n=arr.size();
+        vector<int> mis(arr[n-1],0);
+        for(int i=0;i<arr[n-1];i++)
+        {
+            mis[i]=i+1;
+        }
+        int ans=arr[n-1];
+        for(int i=0;i<arr[n-1];i++) 
+        {
+            if(k<=0) {
+                break;
+            }
+            if(!binary_search(arr.begin(), arr.end(), mis[i]))
+            {
+                k--;
+                ans=mis[i];
+            }
+        }
+        if(k>0) {
+            ans=arr[n-1];
+            while(k>0) {
+                ans++;
+                k--;
+            }
+        }
+        return ans;
+    }
+};
