@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> leftRigthDifference(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> ans(n,0);
+        vector<int> l(n,0);
+        vector<int> r(n,0);
+        for(int i=0;i<n;i++) 
+        {
+            int sum=0;
+            for(int j=i+1;j<n;j++) {
+                sum +=nums[j];
+            }
+            l[i]=sum;
+            sum=0;
+            for(int j=i-1;j>=0;j--) {
+                 sum +=nums[j];
+            }
+            r[i]=sum;
+        }
+        for(int i=0;i<n;i++) 
+        {
+            ans[i]= abs(l[i]-r[i]);
+        }
+        return ans;
+        
+    }
+};
