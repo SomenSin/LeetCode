@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string kthLargestNumber(vector<string>& nums, int k) {
+
+    int n=nums.size();
+    sort(nums.begin(),nums.end(),[&](auto& a,auto& b){
+        return (a.length()==b.length())?a<b:a.length()<b.length();
+    });
+
+    return nums[n-k]; 
+
+    }
+};
