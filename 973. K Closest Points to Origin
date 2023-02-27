@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& p, int k) {
+        priority_queue<pair<double,int>> pq;
+        vector<vector<int>> ans;
+        int n=p.size();
+        for(int i=0;i<n;i++)
+        {
+            double x=sqrt( pow(p[i][0],2) + pow(p[i][1],2) );
+            pq.push({x,i});
+            if(pq.size()>k) {
+                pq.pop();
+            }
+        }
+        while(k--)
+        {
+            ans.push_back({ p[pq.top().second][0] , p[pq.top().second][1] });
+            pq.pop();
+        }
+        return ans;
+    }
+};
