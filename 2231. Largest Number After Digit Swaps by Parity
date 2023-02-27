@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int largestInteger(int num) {
+        vector<int> ans;
+        priority_queue<int> epq,opq;
+        int k=num;
+        while(num>0)
+        {
+            int x=num%10;
+            if(num%2==0) {
+                epq.push(x);
+            }
+            else {
+                opq.push(x);
+            }
+            num /=10;
+        }
+        while(k)
+        {
+            int x=k%10;
+            ans.push_back(x);
+            k=k/10;
+        }
+        reverse(ans.begin(),ans.end());
+        int n=ans.size(),nans=0;
+        for(int i=0;i<n;i++)
+        {
+            if(ans[i]%2==0) {
+                ans[i]=epq.top();
+                epq.pop();
+            }
+            else {
+                ans[i]=opq.top();
+                opq.pop();
+            }
+            nans = nans*10+ans[i];
+        }
+
+        return nans;
+
+
+    }
+};
