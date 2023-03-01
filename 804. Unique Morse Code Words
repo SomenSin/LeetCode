@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& w) {
+        vector<string> pt={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        unordered_set <string> ans;
+        for(int i=0;i<w.size();i++)
+        {
+            string tmp="";
+            for(int j=0;j<w[i].size();j++)
+            {
+                tmp += pt[w[i][j]-'a'];
+            }
+            ans.insert(tmp);
+        }
+        return ans.size();
+    }
+};
