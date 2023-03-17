@@ -1,0 +1,31 @@
+class Solution
+{
+    public:
+    //Function to sort an array using quick sort algorithm.
+    void quickSort(int arr[], int low, int high)
+    {
+        if(high > low) {
+            int p = partition(arr,low,high); //O(n)
+            quickSort(arr,low,p-1);     //T(n/2)
+            quickSort(arr,p+1,high);    //T(n/2)
+        }
+    }
+    //reference relation = 2T(n/2) + O(n)
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+        int piv = arr[high];
+        int st = low-1;
+       for(int i=low;i<high;i++)
+       {
+           if(arr[i] < piv)
+           {
+               st++;
+               swap(arr[st],arr[i]);
+           }
+       }
+       swap(arr[st+1],arr[high]);
+       return st+1;
+    }
+};
