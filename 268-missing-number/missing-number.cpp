@@ -1,16 +1,24 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int n = nums.size();
-        int sum1=0,sum2=0;
-        for(int i=1;i<=n;i++) {
-            sum1 += i;
+        sort(nums);
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] != i) {
+                return i;
+            }
         }
-        for(int i=0;i<n;i++) {
-            sum2 += nums[i];
+        return nums.size();
+    }
+
+    void sort(vector<int>& nums) {
+        int n = nums.size(), i = 0;
+        while(i < n) {
+            int correctIndex = nums[i];
+            if(nums[i] < n && nums[i] != nums[correctIndex]) {
+                swap(nums[i], nums[correctIndex]);
+            } else {
+                i++;
+            }
         }
-
-        return sum1-sum2;
-
     }
 };
