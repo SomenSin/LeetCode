@@ -2,9 +2,7 @@ class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& inv) {
         vector<vector<int>> ans;
-        sort(inv.begin(), inv.end(), [](vector<int>& a, vector<int>& b) {
-            return a[0] < b[0];
-        });
+        sort(inv.begin(), inv.end());
 
         int i=0,j=1,n=inv.size();
         if(n<=1) {
